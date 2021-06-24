@@ -1,0 +1,133 @@
+<!--
+<div class="container">
+    <div class="card mt-5" style="padding: 20px;">
+        <form #registerForm="ngForm" (ngSubmit)="login(registerForm)">
+            <div class="form-group">
+                <label for="name">User Email:</label>
+                <input type="text" #email (ngModel)="email" name="email" id="email" class="form-control"
+                    placeholder="User email">
+            </div>
+            <div class="form-group">
+                <label for="name">User Password:</label>
+                <input type="text" #password (ngModel)="password" name="password" id="password"
+                    class="form-control" placeholder="User password">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary w-100">
+            </div>
+        </form>
+    </div>
+</div>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/login">Online Blood Bank</a>
+    </div>
+  </div>
+</nav>
+<div class="row">
+    <div class="col-md-6 mx-auto p-0">
+        <div class="card">
+            <div class="login-box">
+                <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label
+                        for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab"
+                        class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                    <div class="login-space">
+                        <div class="login">
+                            <form #registerForm="ngForm" (ngSubmit)="login(registerForm)">
+                                <div class="group">
+                                    <div class="form-group">
+                                        <label for="user" class="label">Username</label>
+                                        <input type="text" #email (ngModel)="email" name="email" id="email"
+                                            class="form-control" placeholder="User email">
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <div class="form-group">
+                                        <label for="pass" class="label">Password</label>
+                                        <input type="password" #password (ngModel)="password" name="password"
+                                            id="password" class="form-control" placeholder="User password">
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <div class="form-group">
+                                        <input type="submit" value="Login" class="btn btn-primary w-100">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sign-up-form">
+                            <form #registerUser="ngForm" (ngSubmit)="register(registerUser)">
+                                <div class="group">
+                                    <div class="form-group">
+                                        <label for="user" class="label">UserName:</label>
+                                        <input type="text" #name (ngModel)="name" name="name" id="name"
+                                            class="form-control" placeholder="User Name">
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <div class="form-group">
+                                        <label for="user" class="label">User Email:</label>
+                                        <input type="text" #email (ngModel)="email" name="email" id="email"
+                                            class="form-control" placeholder="User email">
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <div class="form-group">
+                                        <label for="user" class="label">User PhoneNumber:</label>
+                                        <input type="text" #phonenumber (ngModel)="phonenumber" name="phonenumber"
+                                            id="phonenumber" class="form-control" placeholder="User phonenumber">
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <div class="form-group">
+                                        <label for="user" class="label">User Password:</label>
+                                        <input type="password" #password (ngModel)="password" name="password"
+                                            id="password" class="form-control" placeholder="User Password">
+                                    </div>
+                                </div>
+                               
+                                <div class="group">
+                                    <div class="form-group">
+                                        <input type="submit" value="Sign up" class="btn btn-primary w-100">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="hr"></div>
+                            <div class="foot"> <label for="tab-1">Already Member?</label> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button class="open-button" (click)="openForm()">Admin Form</button>
+
+  <div class="form-popup" id="myForm">
+    <form #user="ngForm" (ngSubmit)="onSubmit(user.value)" class="form-container">
+        <h1>Login</h1>
+        <label for="email"><b>Email</b></label>
+        <input type="text" name="email" placeholder="Email" ngModel required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" name="passwd" placeholder="Password" ngModel required>
+        <input type="submit" class="btn" value="Submit">
+        <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+      </form>
+  </div>

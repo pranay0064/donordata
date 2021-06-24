@@ -1,0 +1,152 @@
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/login">Online Blood Bank</a>
+      </div>
+    </div>
+  </nav>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="container">
+            <div class="card mt-5" style="align-items: center;">
+                <h1>Donor Dashboard</h1>
+            </div>
+            <div class="card mt-5" style="padding: 20px;">
+                <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                    <div class="form-group">
+                        <label for="name">Donor Name:</label>
+                        <input type="text" #name (ngModel)="name" name="name" id="name" class="form-control"
+                            placeholder="Donor Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor Email:</label>
+                        <input type="text" #email (ngModel)="email" name="email" id="email" class="form-control"
+                            placeholder="Donor email">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor PhoneNumber:</label>
+                        <input type="text" #phonenumber (ngModel)="phonenumber" name="phonenumber" id="phonenumber"
+                            class="form-control" placeholder="Donor phonenumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor BloodGroup:</label>
+                        <input type="text" #bloodgroup (ngModel)="bloodgroup" name="bloodgroup" id="bloodgroup"
+                            class="form-control" placeholder="Donor bloodgroup">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor Date:</label>
+                        <input type="date" #date (ngModel)="date" name="date" id="date" class="form-control"
+                            placeholder="Donor date">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-primary w-100">
+                    </div>
+                </form>
+            </div>
+            <div class="mt-5">
+                <table class="table table-bordered">
+                    <thead class="thead">
+                        <tr>
+                            <th>Id Number</th>
+                            <th>Name</th>
+                            <th>EMail</th>
+                            <th>PhoneNumber</th>
+                            <th>BloodGroup</th>
+                            <th>Date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr *ngFor="let donor of donorDetails">
+                            <td>{{donor.did}}</td>
+                            <td>{{donor.name}}</td>
+                            <td>{{donor.email}}</td>
+                            <td>{{donor.phonenumber}}</td>
+                            <td>{{donor.bloodgroup}}</td>
+                            <td>{{donor.date}}</td>
+                            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" (click)="edit(donor)">
+                                    Edit
+                                </button></td>
+                            <td><button type="button" class="btn btn-danger"
+                                    (click)="deleteDonor(donor)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <h3>Update Form</h3>
+            <div class="card mt-5" style="padding: 20px;">
+                <form #updateForm="ngForm" (ngSubmit)="updateDonorDetails(updateForm)">
+                    <div class="form-group">
+                        <label for="name">Donor Id:</label>
+                        <input type="text" disabled #did [(ngModel)]="donorToUpdate.did" name="did" id="did"
+                            class="form-control" placeholder="Donor Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor Name:</label>
+                        <input type="text" #name [(ngModel)]="donorToUpdate.name" name="name" id="name"
+                            class="form-control" placeholder="Donor Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor Email:</label>
+                        <input type="text" #email [(ngModel)]="donorToUpdate.email" name="email" id="email"
+                            class="form-control" placeholder="Donor email">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor PhoneNumber:</label>
+                        <input type="text" #phonenumber [(ngModel)]="donorToUpdate.phonenumber" name="phonenumber"
+                            id="phonenumber" class="form-control" placeholder="Donor phonenumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor BloodGroup:</label>
+                        <input type="text" #bloodgroup [(ngModel)]="donorToUpdate.bloodgroup" name="bloodgroup"
+                            id="bloodgroup" class="form-control" placeholder="Donor bloodgroup">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donor Date:</label>
+                        <input type="text" #date [(ngModel)]="donorToUpdate.date" name="date" id="date"
+                            class="form-control" placeholder="Donor date">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-primary w-100">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+
+        <div class="card mt-5" style="align-items: center;">
+            <h1>User Dashboard</h1>
+        </div>
+        <div class="mt-5">
+            <table class="table table-bordered">
+                <thead class="thead">
+                    <tr>
+                        <th>Id Number</th>
+                        <th>Name</th>
+                        <th>EMail</th>
+                        <th>PhoneNumber</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <tr *ngFor="let user of userDetails">
+                        <td>{{user.uid}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phonenumber}}</td>
+                        <td><button type="button" class="btn btn-danger" (click)="deleteUser(user)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
